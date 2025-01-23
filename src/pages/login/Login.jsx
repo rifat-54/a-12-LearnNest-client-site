@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
+import SocialLogin from "../../shareComponent/SocialLogin";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,formState: { errors } } = useForm();
   const onSubmit = (data) => console.log(data);
 
   return (
@@ -17,6 +19,9 @@ const Login = () => {
           className="input input-bordered"
           {...register("email", { required: true })}
         />
+         {errors.email?.type === "required" && (
+        <p className="text-red-500">Email is required</p>
+      )}
       </div>
       <div className="form-control">
         <label className="label">
@@ -28,11 +33,20 @@ const Login = () => {
           className="input input-bordered"
           {...register("password", { required: true })}
         />
+         {errors.password?.type === "required" && (
+        <p className="text-red-500">Password is required</p>
+      )}
       </div>
       <input className="btn mt-4 bg-[#6DC5D1] text-white" value={'Login'} type="submit" />
 
+      <p>New to this Website?Please <Link className="text-red-400 underline" to={'/register'}>Register</Link></p>
+
       {/* <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
       <input type="number" {...register("age", { min: 18, max: 99 })} /> */}
+
+      {/* social login */}
+
+      <SocialLogin></SocialLogin>
     </form>
     </div>
   );

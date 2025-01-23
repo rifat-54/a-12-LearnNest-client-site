@@ -1,48 +1,19 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import SocialLogin from "../../shareComponent/SocialLogin";
 
 const Register = () => {
-  const [icon, setIcon] = useState(false);
-  const [error, setError] = useState("");
-
- 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const name = e.target.name.value;
-    const photo = e.target.photo.value;
-    // console.log(name, photo, email, password);
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters");
-      return;
-    }
-    if (!/[a-z]/.test(password)) {
-      setError("password should be at least one small character");
-      return;
-    }
-    if (!/[A-Z]/.test(password)) {
-      setError("password should be at least one uppercase ");
-      return;
-    }
-
-   
-    //   .catch((error) => {
-    //     setError(error.message.split(":")[1]);
-    //   });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
- 
-
-  const handleIcon = (e) => {
-    e.preventDefault();
-    setIcon(!icon);
-  };
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content w-full flex-col ">
@@ -50,88 +21,104 @@ const Register = () => {
           <h1 className="text-3xl text-center mt-10 font-bold">
             Register now!
           </h1>
-          <form onSubmit={handleSubmit} className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            {/* name */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
               <input
-                name="name"
                 type="text"
-                placeholder="name"
+                placeholder="Name"
                 className="input input-bordered"
-                required
+                {...register("name", { required: true })}
               />
+              {errors.name?.type === "required" && (
+                <p className="text-red-500">Name is required</p>
+              )}
             </div>
+            {/* photo url */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Photo URL</span>
               </label>
               <input
-                name="photo"
-                type="text"
-                placeholder="Photo Url"
+                type="url"
+                placeholder="Photo url"
                 className="input input-bordered"
-                required
+                {...register("photo", { required: true })}
               />
+              {errors.photo?.type === "required" && (
+                <p className="text-red-500">Photo URL is required</p>
+              )}
             </div>
+            {/* email */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                name="email"
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
-                required
+                {...register("email", { required: true })}
               />
+              {errors.email?.type === "required" && (
+                <p className="text-red-500">Email is required</p>
+              )}
             </div>
+
             <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                name="password"
-                type={icon ? "text" : "password"}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 19,
+                  pattern:
+                    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+                })}
+                type={"password"}
                 placeholder="password"
                 className="input input-bordered"
-                required
               />
-              <button onClick={handleIcon}>
-                {icon ? (
-                  <p className="absolute top-[52%] right-[5%]">
-                    <FaRegEye />
-                  </p>
-                ) : (
-                  <p className="absolute top-[52%] right-[5%]">
-                    <FaRegEyeSlash />
-                  </p>
-                )}
-              </button>
-
-              <label className="label">
-                {error && <p className="text-red-600">{error}</p>}
-              </label>
+              {errors.password?.type === "required" && (
+                <p className="text-red-500">Password is required</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-500">
+                  Password must be atleast 6 characters
+                </p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-red-500">
+                  Passwod must be less than 19 characters
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-500">
+                  Passwod must be minimum 6 characters, at least one letter, one
+                  number and one special character:
+                </p>
+              )}
             </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+            <div className="form-control mt-2">
+              <input
+                className="btn mt-4 bg-[#6DC5D1] text-white"
+                value={"Register"}
+                type="submit"
+              />
             </div>
             <p>
               Allready have an account? please{" "}
-              <Link className="text-red-500" to={"/login"}>
+              <Link className="text-red-500 underline" to={"/login"}>
                 Login
               </Link>{" "}
             </p>
+            <SocialLogin></SocialLogin>
           </form>
-          <div>
-            <button
-             
-              className="btn block w-11/12 mb-14 mx-auto"
-            >
-              Login With Google
-            </button>
-          </div>
         </div>
       </div>
     </div>
