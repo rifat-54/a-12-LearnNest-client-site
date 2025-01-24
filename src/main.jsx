@@ -12,9 +12,11 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HelmetProvider>
     <AuthProvider>
-
+      
+    <div className='max-w-7xl mx-auto'>
     <RouterProvider router={routes}></RouterProvider>
-    <Toaster/>
+    </div>
+    <Toaster position="top-right"/>
     
     </AuthProvider>
     </HelmetProvider>

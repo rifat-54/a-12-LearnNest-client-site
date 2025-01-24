@@ -5,6 +5,7 @@ import AllClasses from "../pages/allClasses/AllClasses";
 import TeachOn from "../pages/teachOn/TeachOn";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import PrivateRoutes from './PrivateRoutes';
 
 
 const routes=createBrowserRouter([
@@ -22,7 +23,7 @@ const routes=createBrowserRouter([
             },
             {
                 path:'teach-on',
-                element:<TeachOn></TeachOn>
+                element:<PrivateRoutes><TeachOn></TeachOn></PrivateRoutes>
             },
             {
                 path:'login',

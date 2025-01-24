@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import UseAuth from "./UseAuth";
 
 const axiosSecure = axios.create({
-  baseURL:import.meta.env.VITE_SERVER_KEY,
+  baseURL:import.meta.env.VITE_SERVER_API_KEY,
 });
 
 const useAxiosSecure = () => {
