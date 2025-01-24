@@ -3,16 +3,63 @@ import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SocialLogin from "../../shareComponent/SocialLogin";
+import UseAuth from "../../hook/UseAuth";
+import toast from "react-hot-toast";
+import UseAxiosPublic from "../../hook/UseAxiosPublic";
 
 const Register = () => {
+
+  const{createUser,updateUser}=UseAuth()
+  const axiosPublic=UseAxiosPublic()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+
+
+  const onSubmit = async(data) => {
     console.log(data);
-  };
+
+    // register user
+    createUser(data?.email,data?.password)
+    .then(()=>{
+      
+      // update profile
+      updateUser(data?.name,data?.photo)
+      .then(async()=>{
+        toast.success('Succesfully Register!');
+        // TO DO save to data base
+
+        const info={
+          email:data?.email,
+          name:data?.name,
+          photo:data?.photo
+        }
+
+        try {
+           const{data}=await axiosPublic.post('/users',info)
+           console.log(data);
+        } catch (error) {
+           console.log(error);
+        }
+
+
+      })
+      .catch(error=>{
+        toast.error(error?.message);
+      })
+    })
+    .catch(err=>{
+      toast.error(err.message);
+    })
+
+    }
+    
+
+  
+
 
   return (
     <div className="hero bg-base-200 min-h-screen">
