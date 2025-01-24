@@ -34,14 +34,14 @@ const Navber = () => {
   );
   return (
     <div>
-      <div className="navbar bg-[#6DC5D1] justify-between">
+      <div className="navbar z-50  bg-[#6DC5D1] justify-between">
         <div className="">
           <a className="btn btn-ghost text-xl">LearnNest</a>
         </div>
         {/* middle */}
         <div className="hidden sm:block">{links}</div>
         <div className="flex-none">
-          <div className="dropdown dropdown-end">
+          <div className="dropdown z-50 dropdown-end">
             {user ? (
               <div
                 tabIndex={0}
@@ -69,7 +69,7 @@ const Navber = () => {
             {user ? (
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu z-50 menu-sm dropdown-content bg-base-100 rounded-box  mt-3 w-52 p-2 shadow"
               >
                 <div className="sm:hidden">{links}</div>
                 <li>

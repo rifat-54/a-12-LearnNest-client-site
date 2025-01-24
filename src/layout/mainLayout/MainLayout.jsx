@@ -7,7 +7,7 @@ const MainLayout = () => {
     return (
         <div>
             <Navber></Navber>
-            main layout
+            
             <Outlet></Outlet>
 
             <Footer></Footer>
