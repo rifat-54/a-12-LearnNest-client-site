@@ -79,7 +79,7 @@ const Navber = () => {
                   </a>
                 </li>
                 <li>
-                  <a>DashBoard</a>
+                  <Link to={'/dashboard'}>DashBoard</Link>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>Logout</button>

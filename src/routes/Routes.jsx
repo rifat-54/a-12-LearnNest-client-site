@@ -6,6 +6,10 @@ import TeachOn from "../pages/teachOn/TeachOn";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import PrivateRoutes from './PrivateRoutes';
+import DashBoard from "../layout/dashboard/DashBoard";
+import AddClass from "../pages/dashboard/teacher/AddClass";
+import TeacherRequest from "../pages/dashboard/admin/TeacherRequest";
+import AllClassStatus from "../pages/dashboard/admin/AllClassStatus";
 
 
 const routes=createBrowserRouter([
@@ -32,6 +36,24 @@ const routes=createBrowserRouter([
             {
                 path:'register',
                 element:<Register></Register>
+            }
+        ]
+    },
+    {
+        path:'dashboard',
+        element:<PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
+        children:[
+            {
+                path:'addclass',
+                element:<AddClass></AddClass>
+            },
+            {
+                path:'teacher-request',
+                element:<TeacherRequest></TeacherRequest>
+            },
+            {
+                path:'allclass-status',
+                element:<AllClassStatus></AllClassStatus>
             }
         ]
     }

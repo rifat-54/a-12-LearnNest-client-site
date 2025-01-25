@@ -163,7 +163,7 @@ const TeachOn = () => {
           <div className="form-control mt-6">
             <input
               className="btn bg-[#6DC5D1] text-white"
-             
+              value={'Submit For Revew'}
               type="submit"
             />
           </div>

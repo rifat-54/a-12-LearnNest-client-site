@@ -1,6 +1,7 @@
 
 import { Navigate, useLocation } from 'react-router-dom';
 import UseAuth from '../hook/UseAuth';
+import LoadingSpiner from '../components/ShareComponets/LoadingSpiner';
 
 const PrivateRoutes = ({children}) => {
     const location=useLocation()
@@ -8,7 +9,7 @@ const PrivateRoutes = ({children}) => {
     const{user,loading}=UseAuth()
 
     if(loading){
-        return <p className='mt-24 text-center'><span className="loading loading-bars loading-lg"></span></p>
+        return <LoadingSpiner></LoadingSpiner>
     }
 
 
