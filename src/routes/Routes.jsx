@@ -10,6 +10,8 @@ import DashBoard from "../layout/dashboard/DashBoard";
 import AddClass from "../pages/dashboard/teacher/AddClass";
 import TeacherRequest from "../pages/dashboard/admin/TeacherRequest";
 import AllClassStatus from "../pages/dashboard/admin/AllClassStatus";
+import MyClasses from "../pages/dashboard/teacher/MyClasses";
+import UpdateClass from "../pages/dashboard/teacher/UpdateClass";
 
 
 const routes=createBrowserRouter([
@@ -54,6 +56,14 @@ const routes=createBrowserRouter([
             {
                 path:'allclass-status',
                 element:<AllClassStatus></AllClassStatus>
+            },
+            {
+                path:'my-classes',
+                element:<MyClasses></MyClasses>
+            },
+            {
+                path:'update-class/:id',
+                element:<UpdateClass></UpdateClass>
             }
         ]
     }

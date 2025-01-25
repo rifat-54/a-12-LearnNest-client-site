@@ -1,6 +1,6 @@
 import React from 'react';
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
-const ClassRejectModal = ({ isOpen, setIsOpen,handleRejectedClass }) => {
+const DeleteClassModal = ({isOpen, setIsOpen,handleRejectedClass}) => {
     return (
         <div className="w-full">
       <Dialog
@@ -25,4 +25,4 @@ const ClassRejectModal = ({ isOpen, setIsOpen,handleRejectedClass }) => {
     );
 };
 
-export default ClassRejectModal;
+export default DeleteClassModal;

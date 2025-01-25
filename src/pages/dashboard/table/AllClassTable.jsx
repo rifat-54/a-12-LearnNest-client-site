@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import toast from 'react-hot-toast';
+import ClassRejectModal from '../../../components/dashboard/modal/ClassRejectModal';
 
 const AllClassTable = ({item,refetch}) => {
     const{email,title,status,photo,description,_id}=item || {}
-
+    let [isOpen, setIsOpen] = useState(false)
     const axiosSecure=useAxiosSecure()
 
     const handleApprovedClass=async()=>{
@@ -27,6 +28,8 @@ const AllClassTable = ({item,refetch}) => {
             refetch()
         } catch (error) {
             console.log(error);
+        }finally{
+            setIsOpen(false)
         }
     }
 
@@ -42,13 +45,19 @@ const AllClassTable = ({item,refetch}) => {
                   />
                 </div>
               </div>
+              <ClassRejectModal 
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              handleRejectedClass={handleRejectedClass}
+              
+              ></ClassRejectModal>
             </td>
             <td>{email}</td>
             <td>{title}</td>
             <td>{description?.slice(0,20)}</td>
             <td>{status}</td>
             <td><button disabled={status==='Accepted'} onClick={handleApprovedClass} className='btn btn-sm bg-green-400 text-white'>Approved</button></td>
-            <td><button disabled={status==='Rejected'} onClick={handleRejectedClass} className='btn btn-sm bg-red-400 text-white'>Rejected</button></td>
+            <td><button disabled={status==='Rejected'} onClick={()=>setIsOpen(true)} className='btn btn-sm bg-red-400 text-white'>Rejected</button></td>
             <td><button className='btn btn-sm bg-[#6DC5D1] text-white'>Progress</button></td>
            
           </tr>
