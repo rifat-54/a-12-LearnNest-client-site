@@ -28,7 +28,7 @@ const MyClasses = () => {
 
   console.log(classes);
 
-  
+
   return (
     <div>
       <h2 className="text-3xl font-bold text-center my-8">
@@ -41,6 +41,7 @@ const MyClasses = () => {
           <TeacherClassCard 
           key={item._id}
           item={item}
+          refetch={refetch}
           ></TeacherClassCard>
         ))}
       </div>

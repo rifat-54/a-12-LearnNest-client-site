@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import DeleteClassModal from "../../../components/dashboard/modal/DeleteClassModal";
+import toast from "react-hot-toast";
 
-const TeacherClassCard = ({ item }) => {
+const TeacherClassCard = ({ item,refetch }) => {
   const { name, title, photo, price, description, email, status, _id } =
     item || {};
 
     const axiosSecure=useAxiosSecure()
+    let [isOpen, setIsOpen] = useState(false);
 
-    const handleDeleteClass=()=>{
+    const handleDeleteClass=async()=>{
+       try {
+        const {data}=await axiosSecure.delete(`/delete-class/${_id}`)
+        console.log(data);
+        toast.success('Successfully deleted')
+        refetch()
+       } catch (error) {
         
+       }finally{
+        setIsOpen(false)
+       }
     }
 
   return (
@@ -59,11 +71,16 @@ const TeacherClassCard = ({ item }) => {
           >
             Update
           </Link>
-          <button className="btn btn-sm bg-red-500 text-white">Delete</button>
+          <button onClick={()=>setIsOpen(true)} className="btn btn-sm bg-red-500 text-white">Delete</button>
           <button className="btn btn-sm bg-[#6DC5D1] text-white">
             Details
           </button>
         </div>
+        <DeleteClassModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        handleDeleteClass={handleDeleteClass}
+        ></DeleteClassModal>
       </div>
     </div>
   );

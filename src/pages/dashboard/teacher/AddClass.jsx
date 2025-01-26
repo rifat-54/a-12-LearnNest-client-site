@@ -4,10 +4,13 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import UseHelmet from "../../../hook/UseHelmet";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 
 const AddClass = () => {
   const { user } = UseAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate=useNavigate()
 
   const {
     register,
@@ -29,6 +32,7 @@ const AddClass = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate('/dashboard/my-classes')
       }
     } catch (error) {
       console.log(error);
