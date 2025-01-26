@@ -75,9 +75,9 @@ const TeacherClassCard = ({ item,refetch }) => {
             Update
           </Link>
           <button onClick={()=>setIsOpen(true)} className="btn btn-sm bg-red-500 text-white">Delete</button>
-          <button disabled={status!=='Accepted'} className="btn btn-sm bg-[#6DC5D1] text-white">
+          <Link to={`/dashboard/my-class-details/${_id}`} disabled={status!=='Accepted'} className="btn btn-sm bg-[#6DC5D1] text-white">
             Details
-          </button>
+          </Link>
         </div>
         <DeleteClassModal
         isOpen={isOpen}
