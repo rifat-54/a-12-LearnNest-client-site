@@ -12,6 +12,10 @@ import TeacherRequest from "../pages/dashboard/admin/TeacherRequest";
 import AllClassStatus from "../pages/dashboard/admin/AllClassStatus";
 import MyClasses from "../pages/dashboard/teacher/MyClasses";
 import UpdateClass from "../pages/dashboard/teacher/UpdateClass";
+import Class from "../pages/allClasses/Class";
+import Payment from "../pages/allClasses/Payment";
+import MyEnrollClass from "../pages/dashboard/student/MyEnrollClass";
+import MyEnrollClassDetails from "../pages/dashboard/student/MyEnrollClassDetails";
 
 
 const routes=createBrowserRouter([
@@ -38,6 +42,14 @@ const routes=createBrowserRouter([
             {
                 path:'register',
                 element:<Register></Register>
+            },
+            {
+                path:'class/:id',
+                element:<PrivateRoutes><Class></Class></PrivateRoutes>
+            },
+            {
+                path:'payment/:id',
+                element:<PrivateRoutes><Payment></Payment></PrivateRoutes>
             }
         ]
     },
@@ -64,6 +76,14 @@ const routes=createBrowserRouter([
             {
                 path:'update-class/:id',
                 element:<UpdateClass></UpdateClass>
+            },
+            {
+                path:'myEnroll-class',
+                element:<MyEnrollClass></MyEnrollClass>
+            },
+            {
+                path:'my-enroll-class-details/:id',
+                element:<MyEnrollClassDetails></MyEnrollClassDetails>
             }
         ]
     }

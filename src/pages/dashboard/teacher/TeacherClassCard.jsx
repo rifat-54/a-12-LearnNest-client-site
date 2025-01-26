@@ -5,7 +5,7 @@ import DeleteClassModal from "../../../components/dashboard/modal/DeleteClassMod
 import toast from "react-hot-toast";
 
 const TeacherClassCard = ({ item,refetch }) => {
-  const { name, title, photo, price, description, email, status, _id } =
+  const { name, title, photo, price, description,enroll, email, status, _id } =
     item || {};
 
     const axiosSecure=useAxiosSecure()
@@ -46,10 +46,13 @@ const TeacherClassCard = ({ item,refetch }) => {
             Email: <span className="text-gray-700 font-semibold">{email}</span>
           </p>
         </div>
+
         <div className="divider"></div>
         <h2 className="card-title">Title: {title}</h2>
         <p className="text-gray-500">{description?.slice(0, 90)}</p>
-        <div className="flex items-center my-3 justify-between">
+        <p className="mt-2">Enroll: <span className="text-xl font-bold">{enroll}</span></p>
+        <div className="flex items-center -mt-2 mb-3 justify-between">
+          
           <p>
             Price: <span className="text-xl font-bold">${price}</span>
           </p>
@@ -72,7 +75,7 @@ const TeacherClassCard = ({ item,refetch }) => {
             Update
           </Link>
           <button onClick={()=>setIsOpen(true)} className="btn btn-sm bg-red-500 text-white">Delete</button>
-          <button className="btn btn-sm bg-[#6DC5D1] text-white">
+          <button disabled={status!=='Accepted'} className="btn btn-sm bg-[#6DC5D1] text-white">
             Details
           </button>
         </div>
