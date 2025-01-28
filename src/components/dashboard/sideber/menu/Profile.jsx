@@ -28,7 +28,7 @@ const Profile = () => {
               </p>
               <p className='mt-2 text-xl font-medium text-gray-800 '>
                 {/* User Id: {user.uid} */}
-                user id: 110123
+                Phone: 01784-427654
               </p>
               <div className='w-full p-2 mt-4 rounded-lg'>
                 <div className='flex flex-wrap items-center justify-between text-sm text-gray-600 '>

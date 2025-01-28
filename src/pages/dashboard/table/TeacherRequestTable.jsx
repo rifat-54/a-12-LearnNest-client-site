@@ -63,14 +63,16 @@ const TeacherRequestTable = ({ item, refetch }) => {
       <td>{title}</td>
       <td>{category}</td>
       <td>{status}</td>
-      <td>
+      <td className="flex flex-col gap-2 justify-center">
         <button
+        disabled={status==='Verified'}
           onClick={handleApproved}
           className="btn bg-[#6DC5D1] text-white btn-ghost btn-xs"
         >
           Approve
         </button>
         <button
+         disabled={status==='Verified'}
           onClick={() => setIsOpen(true)}
           className="btn bg-red-400 mt-2 text-white btn-ghost btn-xs"
         >

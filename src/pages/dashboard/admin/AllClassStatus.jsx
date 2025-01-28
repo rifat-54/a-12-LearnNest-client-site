@@ -16,7 +16,8 @@ const AllClassStatus = () => {
     queryFn: async () => {
       try {
         const { data } = await axiosSucure("/allClass-status");
-        return data;
+        const notreject=data.filter(item=>item?.status!=='Rejected')
+        return notreject;
       } catch (error) {}
     },
   });
