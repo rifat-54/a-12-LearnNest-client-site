@@ -4,7 +4,7 @@ import "./navber.css";
 import UseAuth from "../hook/UseAuth";
 import toast from "react-hot-toast";
 import { FaBars } from "react-icons/fa";
-
+import bannerimg from '../assets/ms-icon-150x150.png'
 const Navber = () => {
   const { user, logoutUser } = UseAuth();
 
@@ -35,8 +35,9 @@ const Navber = () => {
   return (
     <div>
       <div className="navbar z-50  bg-[#6DC5D1] justify-between">
-        <div className="">
+        <div className="flex gap-2 items-center">
           <a className="btn btn-ghost text-xl">LearnNest</a>
+          <img className="w-12 h-12 rounded-full" src={bannerimg} alt="" />
         </div>
         {/* middle */}
         <div className="hidden sm:block">{links}</div>

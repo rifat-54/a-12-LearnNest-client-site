@@ -5,10 +5,12 @@ import UseAuth from "../../hook/UseAuth";
 import useAxiosSecure from './../../hook/useAxiosSecure';
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import useRole from './../../hook/useRole';
 
 const TeachOn = () => {
   const { user } = UseAuth();
   const axiosSecure=useAxiosSecure()
+  const[role]=useRole()
 
   const {
     register,
@@ -43,7 +45,24 @@ const TeachOn = () => {
   return (
     <div>
       <UseHelmet value={"LearnNest | Teach on"}></UseHelmet>
+      {
+        role==='Teacher'?
+        <div className="text-center mt-14">
+            <h1 className="text-4xl font-bold text-green-600 mb-4">
+              Welcome, Teacher! 🎉
+            </h1>
+            <p className="mt-6 text-lg text-gray-700 leading-relaxed">
+              You are already registered as a teacher. Feel free to manage your
+              classes, connect with students, and explore the wide range of tools
+              available on your dashboard. We are thrilled to have you onboard and
+              look forward to your contributions in shaping the future of education.
+            </p>
+          </div>
 
+        :
+
+
+     
       <div className="card bg-base-100 w-full md:w-10/12 mx-auto shrink-0 shadow-2xl">
         <h2 className="text-center text-3xl my-12">Apply For Teacher</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -169,6 +188,7 @@ const TeachOn = () => {
           </div>
         </form>
       </div>
+       }
     </div>
   );
 };

@@ -22,6 +22,7 @@ import Users from "../pages/dashboard/admin/Users";
 import Profile from "../components/dashboard/sideber/menu/Profile";
 import AdminRoutes from "./AdminRoutes";
 import TeacherRoutes from "./TeacherRoutes";
+import ShareDashboard from "../layout/dashboard/ShareDashboard";
 
 
 const routes=createBrowserRouter([
@@ -63,6 +64,10 @@ const routes=createBrowserRouter([
         path:'dashboard',
         element:<PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
         children:[
+            {
+                index:true,
+                element:<ShareDashboard></ShareDashboard>
+            },
             {
                 path:'addclass',
                 element:<TeacherRoutes><AddClass></AddClass></TeacherRoutes>

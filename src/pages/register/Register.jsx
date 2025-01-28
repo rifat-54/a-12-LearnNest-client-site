@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../shareComponent/SocialLogin";
 import UseAuth from "../../hook/UseAuth";
 import toast from "react-hot-toast";
@@ -11,6 +11,7 @@ const Register = () => {
 
   const{createUser,updateUser}=UseAuth()
   const axiosPublic=UseAxiosPublic()
+  const navigate=useNavigate()
 
   const {
     register,
@@ -40,6 +41,7 @@ const Register = () => {
 
         try {
            const{data}=await axiosPublic.post('/users',info)
+           navigate('/');
           
         } catch (error) {
           //  console.log(error);
