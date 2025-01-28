@@ -25,7 +25,7 @@ const AllClassStatus = () => {
     return <LoadingSpiner></LoadingSpiner>;
   }
 
-  console.log(classes);
+
 
   return (
     <div className="overflow-x-auto">

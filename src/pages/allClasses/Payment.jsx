@@ -30,7 +30,7 @@ const Payment = () => {
     return <LoadingSpiner></LoadingSpiner>;
   }
 
-  console.log(cls);
+
 
   const { name, title, photo, price, description, email, enroll, _id } =
     cls || {};

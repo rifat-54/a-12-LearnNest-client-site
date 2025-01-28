@@ -43,7 +43,7 @@ const MyClassDetails = () => {
         submission:0
     }
 
-    // console.log(data);
+   
 
 
     try {

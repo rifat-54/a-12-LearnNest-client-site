@@ -27,7 +27,7 @@ const Revew = () => {
     return <LoadingSpiner></LoadingSpiner>;
   }
 
-  console.log(revew);
+  
 
   return (
     <div>

@@ -16,7 +16,7 @@ const SocialLogin = () => {
   const handleGoogleLogin=async()=>{
     googleLogin()
     .then(async(res)=>{
-        console.log(res?.user);
+        
         // save to database
         const info={
           email:res?.user?.email,
@@ -26,15 +26,15 @@ const SocialLogin = () => {
 
         try {
            const{data}=await axiosPublic.post('/users',info)
-           console.log(data);
+         
            toast.success('Successfully Login')
            navigate(from);
         } catch (error) {
-           console.log(error);
+          //  console.log(error);
         }
     })
     .catch(err=>{
-      console.log(err.message);
+      // console.log(err.message);
     })
     // .then()
   }

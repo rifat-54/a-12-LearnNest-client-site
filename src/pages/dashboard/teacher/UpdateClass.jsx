@@ -37,7 +37,7 @@ const UpdateClass = () => {
   // update class
 
   const onSubmit = async (data) => {
-    console.log(data);
+    
 
     try {
       const res = await axiosSecure.put(`/update-class/${_id}`, data);
@@ -55,7 +55,7 @@ const UpdateClass = () => {
       }
     
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

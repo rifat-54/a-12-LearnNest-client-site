@@ -20,7 +20,7 @@ const AddClass = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+  
 
     try {
       const res = await axiosSecure.post("/add-class", data);
@@ -35,7 +35,7 @@ const AddClass = () => {
         navigate('/dashboard/my-classes')
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

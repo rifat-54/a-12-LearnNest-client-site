@@ -20,7 +20,7 @@ const CheckOutFrom = ({id,price,teacherEmail }) => {
     paymentIntent();
   }, [id]);
 
-  console.log(clientSecret);
+  
 
   const paymentIntent = async () => {
     try {
@@ -28,7 +28,7 @@ const CheckOutFrom = ({id,price,teacherEmail }) => {
          
       setClientSecret(data?.clientSecret);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -63,7 +63,7 @@ const CheckOutFrom = ({id,price,teacherEmail }) => {
       setProcessing(true);
       return console.log("[error]", error);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      // console.log("[PaymentMethod]", paymentMethod);
     }
 
     // confrim payment
@@ -77,7 +77,7 @@ const CheckOutFrom = ({id,price,teacherEmail }) => {
       },
     });
 
-    console.log(paymentIntent);
+    
 
     const purchaseInfo={
         email:user?.email,
@@ -91,14 +91,14 @@ const CheckOutFrom = ({id,price,teacherEmail }) => {
     if (paymentIntent.status === "succeeded") {
          try {
           const { data } = await axiosSecure.post("/orders", purchaseInfo);
-          console.log(data);
+          
           
             toast.success("Succesfully Purchase!");
             
             navigate('/dashboard/myEnroll-class')
           
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         } finally {
          
           setProcessing(false)

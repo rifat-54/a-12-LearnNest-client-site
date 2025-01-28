@@ -22,7 +22,7 @@ const MyEnrollClass = () => {
         return <LoadingSpiner></LoadingSpiner>
     }
 
-    console.log(myenroll);
+    
     return (
         <div>
             <h2 className='text-3xl font-bold text-center my-10'>My Enroll Class</h2>

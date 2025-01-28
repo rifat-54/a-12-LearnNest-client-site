@@ -21,7 +21,7 @@ const MyEnrollClassDetails = () => {
         return <LoadingSpiner></LoadingSpiner>
     }
 
-    console.log(assignment);
+    
 
 
     return (

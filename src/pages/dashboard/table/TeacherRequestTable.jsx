@@ -18,11 +18,11 @@ const TeacherRequestTable = ({ item, refetch }) => {
 
     try {
       const { data } = await axiosSecure.patch(`/reject-teacher/${email}`);
-      console.log(data);
+   
       refetch();
       toast.success("User is Rejected Now!");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setIsOpen(false);
     }
@@ -35,11 +35,11 @@ const TeacherRequestTable = ({ item, refetch }) => {
 
     try {
       const { data } = await axiosSecure.patch(`/approved-teacher/${email}`);
-      console.log(data);
+   
       refetch();
       toast.success("User is Teacher Now!");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

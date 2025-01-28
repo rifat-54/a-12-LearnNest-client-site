@@ -26,7 +26,7 @@ const MyClasses = () => {
     return <LoadingSpiner></LoadingSpiner>;
   }
 
-  console.log(classes);
+
 
 
   return (

@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubscribe=onAuthStateChanged(auth,async(currentUser)=>{
             setUser(currentUser);
-            console.log('currentUser--> ',currentUser);
+            // console.log('currentUser--> ',currentUser);
             if(currentUser?.email){
                 const userInfo={email:currentUser?.email}
                 try {
@@ -56,7 +56,7 @@ const AuthProvider = ({children}) => {
                     }
                     setLoading(false)
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
                 }
             }else{
                 localStorage.removeItem('access-token')

@@ -20,7 +20,7 @@ const Register = () => {
 
 
   const onSubmit = async(data) => {
-    console.log(data);
+    
 
     // register user
     createUser(data?.email,data?.password)
@@ -40,9 +40,9 @@ const Register = () => {
 
         try {
            const{data}=await axiosPublic.post('/users',info)
-           console.log(data);
+          
         } catch (error) {
-           console.log(error);
+          //  console.log(error);
         }
 
 

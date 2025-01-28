@@ -20,7 +20,7 @@ const AllClasses = () => {
         return <LoadingSpiner></LoadingSpiner>
     }
 
-    console.log(classes);
+   
 
 
     return (

@@ -21,7 +21,7 @@ const TotalUserSection = () => {
     return <LoadingSpiner></LoadingSpiner>;
   }
 
-  console.log(homeStat);
+  
 
   return (
     <div>

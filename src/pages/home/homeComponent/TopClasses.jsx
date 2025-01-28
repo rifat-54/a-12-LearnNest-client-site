@@ -32,7 +32,7 @@ const TopClasses = () => {
     return <LoadingSpiner></LoadingSpiner>;
   }
 
-  console.log(topClass);
+
   return (
     <div className="my-20 md:w-11/12 mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8">Popular Courses</h2>

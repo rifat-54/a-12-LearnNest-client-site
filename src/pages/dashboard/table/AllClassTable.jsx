@@ -13,22 +13,22 @@ const AllClassTable = ({item,refetch}) => {
        
         try {
             const {data}=await axiosSecure.patch(`/approved-class/${_id}`)
-            console.log(data);
+           
             toast.success('Class is Accepted!')
             refetch()
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
     const handleRejectedClass=async()=>{
         try {
             const {data}=await axiosSecure.patch(`/rejected-class/${_id}`)
-            console.log(data);
+           
             toast.success('Class is Rejected!')
             refetch()
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }finally{
             setIsOpen(false)
         }

@@ -18,7 +18,7 @@ const TeachOn = () => {
   } = useForm();
 
   const onSubmit = async(data) => {
-    // console.log(data);
+
 
     try {
         const res=await axiosSecure.post('/apply-teacher',data);
@@ -36,7 +36,7 @@ const TeachOn = () => {
         
         
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
   };
 

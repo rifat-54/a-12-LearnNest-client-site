@@ -14,7 +14,7 @@ const TeacherClassCard = ({ item,refetch }) => {
     const handleDeleteClass=async()=>{
        try {
         const {data}=await axiosSecure.delete(`/delete-class/${_id}`)
-        console.log(data);
+       
         toast.success('Successfully deleted')
         refetch()
        } catch (error) {

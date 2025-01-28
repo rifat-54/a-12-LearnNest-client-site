@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Users = () => {
     const axiosSecure=useAxiosSecure()
     const[search,setSearch]=useState('')
-    console.log(search);
+    
 
     const{data:users=[],isLoading,refetch}=useQuery({
         queryKey:['users',search],
