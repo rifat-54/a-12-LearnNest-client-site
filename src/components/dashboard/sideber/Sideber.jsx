@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import UseAuth from '../../../hook/UseAuth';
 import { Link } from 'react-router-dom';
 import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import AdminDashboard from './menu/AdminDashboard';
 import StudentDashboard from './menu/StudentDashboard';
 import TeacherDashboard from './menu/TeacherDashboard';
-
+import { CgProfile } from "react-icons/cg";
+import useRole from '../../../hook/useRole';
 
 const Sideber = () => {
     const { logoutUser} = UseAuth()
   const [isActive, setActive] = useState(false);
 
-//   const[role,isLoading]=useRole()
+
+const[role,isLoading]=useRole()
+
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -77,9 +79,12 @@ const Sideber = () => {
               {role==='admin' &&  <AdminMenu />}
                */}
              
-               <AdminDashboard></AdminDashboard>
-               <StudentDashboard></StudentDashboard>
-               <TeacherDashboard></TeacherDashboard>
+             {role==='Admin' && <AdminDashboard></AdminDashboard> }
+             {role==='Teacher' && <TeacherDashboard></TeacherDashboard> }
+             {role==='Student' && <StudentDashboard></StudentDashboard> }
+               
+               
+               
              
              
             </nav>
@@ -88,17 +93,27 @@ const Sideber = () => {
 
         <div>
           <hr />
-           kjkjlk
+          
           {/* <MenuItem
             icon={FcSettings}
             label='Profile'
             address='/dashboard/profile'
           /> */}
-          <button
-            onClick={logoutUser}
+          <Link to={'/dashboard/profile'}
+          
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
-            <GrLogout className='w-5 h-5' />
+            <CgProfile className='w-5 h-5'/>
+            <span className='mx-4 font-medium'>Profile</span>
+          </Link>
+
+
+          <button
+              onClick={logoutUser}
+            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+          >
+          <GrLogout className='w-5 h-5' />
+           
 
             <span className='mx-4 font-medium'>Logout</span>
           </button>

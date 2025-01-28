@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import UseAuth from "../../../hook/UseAuth";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useQuery } from "@tanstack/react-query";
 
 const MyClassDetails = () => {
   const { id } = useParams();
@@ -15,8 +16,16 @@ const MyClassDetails = () => {
   const axiosSecure=useAxiosSecure()
   
 
-//   const date= format(new Date(startDate), "MM/dd/yyyy")
-//    console.log(date);
+//    get stat
+
+  const{data:stat={},isLoading,refetch}=useQuery({
+    queryKey:['stat',id],
+    queryFn:async()=>{
+        const {data}=await axiosSecure(`/stat/${id}`)
+        return data;
+    }
+  })
+  
 
   const handlesubmit=async(e)=>{
     e.preventDefault();
@@ -41,17 +50,13 @@ const MyClassDetails = () => {
         const{data}=await axiosSecure.post('/assignment',assignmentData);
        
         toast.success('Successfully Created Assignment!')
+        refetch()
         
     } catch (error) {
         
     }finally{
         setIsOpen(false)
-    }
-
-   
-
-
-    
+    } 
 
   }
 
@@ -64,19 +69,19 @@ const MyClassDetails = () => {
         <div className="card bg-base-100  shadow-xl">
           <div className="card-body items-center text-center">
             <p><span className="text-2xl font-semibold">Total Enrollment</span></p>
-            <p><span className="text-3xl font-bold">0</span></p>
+            <p><span className="text-3xl font-bold">{stat?.enroll}</span></p>
           </div>
         </div>
         <div className="card bg-base-100  shadow-xl">
           <div className="card-body items-center text-center">
             <p><span className="text-2xl font-semibold">Total Assignment</span></p>
-            <p><span className="text-3xl font-bold">0</span></p>
+            <p><span className="text-3xl font-bold">{stat?.totalAssignment}</span></p>
           </div>
         </div>
         <div className="card bg-base-100  shadow-xl">
           <div className="card-body items-center text-center">
             <p><span className="text-2xl font-semibold">Total Assignment Submission</span></p>
-            <p><span className="text-3xl font-bold">0</span></p>
+            <p><span className="text-3xl font-bold">{stat?.toatlSubmission}</span></p>
           </div>
         </div>
       </div>

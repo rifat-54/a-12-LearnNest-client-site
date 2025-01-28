@@ -12,8 +12,10 @@ const MyClassAssignment = ({item,index}) => {
     let [isOpen, setIsOpen] = useState(false);
     let [open, setOpen] = useState(false);
     const [link,setLink]=useState('')
+    const [rating,setRating]=useState('')
     const [feedbackLink,setFeedbackLink]=useState('')
     const axiosSecure=useAxiosSecure()
+    
     
 
     const{description,classId,date,title,_id,teacherEmail}=item || {}
@@ -55,38 +57,46 @@ const MyClassAssignment = ({item,index}) => {
 
 
     // feedback 
+    const ratingChanged = (newRating) => {
+        setRating(newRating);
+      };
+
 
     const handleFeedback=async()=>{
 
         const feedbacktData={
+            title,
+            userName:user?.displayName,
+            userPhoto:user?.photoURL,
             classId,
             assignmentId:_id,
             teacherEmail,
             studentEmail:user?.email,
-            feedback:feedbackLink
+            feedback:feedbackLink,
+            rating
         }
 
-        console.log(feedbacktData);
+       
 
-        // try {
-        //     const{data}=await axiosSecure.post(`/submit-assigmnet/${_id}`,submitData)
+        try {
+            const{data}=await axiosSecure.post('/feedback-assignment',feedbacktData)
             
-        //     if(data.insertedId){
-        //         Swal.fire({
-        //             position: "top-end",
-        //             icon: "success",
-        //             title: "Successfully Submitted",
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //           })
-        //     }
-        // } catch (error) {
+            if(data.insertedId){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully Feedback!",
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        } catch (error) {
             
-        // }finally{
-        //     setIsOpen(false)
-        // }
+        }finally{
+            setOpen(false)
+        }
 
-        // console.log(submitData);
+        
 
     }
 
@@ -112,6 +122,7 @@ const MyClassAssignment = ({item,index}) => {
         setOpen={setOpen}
         setFeedbackLink={setFeedbackLink}
         handleFeedback={handleFeedback}
+        ratingChanged={ratingChanged}
         ></FeedBackModal>
         </td>
       </tr>

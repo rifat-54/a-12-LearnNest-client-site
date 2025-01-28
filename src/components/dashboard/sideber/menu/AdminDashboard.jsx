@@ -2,6 +2,8 @@ import React from 'react';
 import AddNav from './AddNav';
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
+import { FaUsers } from "react-icons/fa";
+
 const AdminDashboard = () => {
     return (
         <div>
@@ -15,6 +17,12 @@ const AdminDashboard = () => {
             address={'/dashboard/allclass-status'}
             label={'All Classes'}
             icon={SiGoogleclassroom}
+            ></AddNav>
+
+            <AddNav 
+            address={'/dashboard/users'}
+            label={'Users'}
+            icon={FaUsers}
             ></AddNav>
         </div>
     );

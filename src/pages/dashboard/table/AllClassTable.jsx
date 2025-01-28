@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import toast from 'react-hot-toast';
 import ClassRejectModal from '../../../components/dashboard/modal/ClassRejectModal';
+import { Link } from 'react-router-dom';
 
 const AllClassTable = ({item,refetch}) => {
     const{email,title,status,photo,description,_id}=item || {}
@@ -58,7 +59,7 @@ const AllClassTable = ({item,refetch}) => {
             <td>{status}</td>
             <td><button disabled={status==='Accepted'} onClick={handleApprovedClass} className='btn btn-sm bg-green-400 text-white'>Approved</button></td>
             <td><button disabled={status==='Rejected'} onClick={()=>setIsOpen(true)} className='btn btn-sm bg-red-400 text-white'>Rejected</button></td>
-            <td><button className='btn btn-sm bg-[#6DC5D1] text-white'>Progress</button></td>
+            <td><Link to={`/dashboard/class-progress/${_id}`} className='btn btn-sm bg-[#6DC5D1] text-white'>Progress</Link></td>
            
           </tr>
     );

@@ -17,6 +17,11 @@ import Payment from "../pages/allClasses/Payment";
 import MyEnrollClass from "../pages/dashboard/student/MyEnrollClass";
 import MyEnrollClassDetails from "../pages/dashboard/student/MyEnrollClassDetails";
 import MyClassDetails from "../pages/dashboard/teacher/MyClassDetails";
+import ClassProgress from "../pages/dashboard/admin/ClassProgress";
+import Users from "../pages/dashboard/admin/Users";
+import Profile from "../components/dashboard/sideber/menu/Profile";
+import AdminRoutes from "./AdminRoutes";
+import TeacherRoutes from "./TeacherRoutes";
 
 
 const routes=createBrowserRouter([
@@ -60,19 +65,21 @@ const routes=createBrowserRouter([
         children:[
             {
                 path:'addclass',
-                element:<AddClass></AddClass>
+                element:<TeacherRoutes><AddClass></AddClass></TeacherRoutes>
+                
             },
             {
                 path:'teacher-request',
-                element:<TeacherRequest></TeacherRequest>
+                element:<AdminRoutes><TeacherRequest></TeacherRequest></AdminRoutes>
             },
             {
                 path:'allclass-status',
-                element:<AllClassStatus></AllClassStatus>
+                element:<AdminRoutes><AllClassStatus></AllClassStatus></AdminRoutes>
+                
             },
             {
                 path:'my-classes',
-                element:<MyClasses></MyClasses>
+                element:<TeacherRoutes><MyClasses></MyClasses></TeacherRoutes>
             },
             {
                 path:'update-class/:id',
@@ -89,6 +96,18 @@ const routes=createBrowserRouter([
             {
                 path:'my-class-details/:id',
                 element:<MyClassDetails></MyClassDetails>
+            },
+            {
+                path:'class-progress/:id',
+                element:<ClassProgress></ClassProgress>
+            },
+            {
+                path:'users',
+                element:<AdminRoutes><Users></Users></AdminRoutes>
+            },
+            {
+                path:'profile',
+                element:<Profile></Profile>
             }
         ]
     }
