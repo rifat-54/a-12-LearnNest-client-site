@@ -14,7 +14,7 @@ const Home = () => {
             <TopClasses></TopClasses>
             <Revew></Revew>
             <TotalUserSection></TotalUserSection>
-           home 
+         
         </div>
     );
 };
