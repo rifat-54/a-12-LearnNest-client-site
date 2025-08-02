@@ -1,4 +1,4 @@
-import React from "react";
+
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
@@ -15,7 +15,7 @@ import img3 from '../../../assets/online.jpg'
 
 const BannerSection = () => {
   return (
-    <div>
+    <div className='max-h-[450px]'>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}

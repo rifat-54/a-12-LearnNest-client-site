@@ -14,13 +14,16 @@ const Home = () => {
         <div>
             <UseHelmet value={'LearnNest | home'}></UseHelmet>
             <BannerSection></BannerSection>
+            <div className='max-w-7xl mx-auto'>
+
+           
             <Partners></Partners>
             <TopClasses></TopClasses>
             <TotalUserSection></TotalUserSection>
             <InspiringSection></InspiringSection>
             <ExtraSection></ExtraSection>
             <Revew></Revew>
-         
+          </div>
         </div>
     );
 };

@@ -33,8 +33,8 @@ const Navber = () => {
     </>
   );
   return (
-    <div>
-      <div className="navbar z-50  bg-[#6DC5D1] justify-between">
+    <div className="bg-[#6DC5D1]">
+      <div className="navbar z-50 max-w-7xl mx-auto  justify-between">
         <div className="flex gap-2 items-center">
           <a className="btn btn-ghost text-xl">LearnNest</a>
           <img className="w-12 h-12 rounded-full" src={bannerimg} alt="" />

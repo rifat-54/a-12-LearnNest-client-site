@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ShareSlider = ({image,title,text}) => {
     return (
         <div
-  className="hero min-h-screen"
+  className="hero h-[60vh]"
   style={{
     backgroundImage: `url(${image})`,
   }}>
